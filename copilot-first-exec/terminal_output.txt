@@ -1,0 +1,261 @@
+isax@Ubuntu-24:~/Desktop/test-new$ chmod +x /home/isax/Desktop/test-new/run_analysis.sh
+isax@Ubuntu-24:~/Desktop/test-new$ chmod +x /home/isax/Desktop/test-new/create_fixed_version.sh
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && make all
+gcc -std=c99 -Wall -o file_tracker main.c tracker_core.c utils.c
+In file included from main.c:1:
+file_tracker.h:20:5: error: unknown type name ‘off_t’
+   20 |     off_t size;                    // Dimensione file
+      |     ^~~~~
+file_tracker.h:43:66: error: unknown type name ‘off_t’
+   43 | file_info_t* file_info_create(const char *path, time_t modified, off_t size);
+      |                                                                  ^~~~~
+In file included from tracker_core.c:1:
+file_tracker.h:20:5: error: unknown type name ‘off_t’
+   20 |     off_t size;                    // Dimensione file
+      |     ^~~~~
+file_tracker.h:43:66: error: unknown type name ‘off_t’
+   43 | file_info_t* file_info_create(const char *path, time_t modified, off_t size);
+      |                                                                  ^~~~~
+tracker_core.c: In function ‘tracker_scan_directory’:
+tracker_core.c:113:45: warning: implicit declaration of function ‘file_info_create’ [-Wimplicit-function-declaration]
+  113 |                     file_info_t *new_file = file_info_create(full_path,
+      |                                             ^~~~~~~~~~~~~~~~
+tracker_core.c:113:45: warning: initialization of ‘file_info_t *’ {aka ‘struct file_info *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+In file included from utils.c:1:
+file_tracker.h:20:5: error: unknown type name ‘off_t’
+   20 |     off_t size;                    // Dimensione file
+      |     ^~~~~
+file_tracker.h:43:66: error: unknown type name ‘off_t’
+   43 | file_info_t* file_info_create(const char *path, time_t modified, off_t size);
+      |                                                                  ^~~~~
+utils.c:7:66: error: unknown type name ‘off_t’
+    7 | file_info_t* file_info_create(const char *path, time_t modified, off_t size) {
+      |                                                                  ^~~~~
+utils.c: In function ‘file_matches_pattern’:
+utils.c:46:9: warning: unused variable ‘pattern_len’ [-Wunused-variable]
+   46 |     int pattern_len = strlen(pattern);
+      |         ^~~~~~~~~~~
+make: *** [Makefile:18: file_tracker] Error 1
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && gcc -std=c99 -Wall -o file_tracker main.c tracker_core.c utils.c
+In file included from main.c:1:
+file_tracker.h:20:5: error: unknown type name ‘off_t’
+   20 |     off_t size;                    // Dimensione file
+      |     ^~~~~
+file_tracker.h:43:66: error: unknown type name ‘off_t’
+   43 | file_info_t* file_info_create(const char *path, time_t modified, off_t size);
+      |                                                                  ^~~~~
+In file included from tracker_core.c:1:
+file_tracker.h:20:5: error: unknown type name ‘off_t’
+   20 |     off_t size;                    // Dimensione file
+      |     ^~~~~
+file_tracker.h:43:66: error: unknown type name ‘off_t’
+   43 | file_info_t* file_info_create(const char *path, time_t modified, off_t size);
+      |                                                                  ^~~~~
+tracker_core.c: In function ‘tracker_scan_directory’:
+tracker_core.c:113:45: warning: implicit declaration of function ‘file_info_create’ [-Wimplicit-function-declaration]
+  113 |                     file_info_t *new_file = file_info_create(full_path,
+      |                                             ^~~~~~~~~~~~~~~~
+tracker_core.c:113:45: warning: initialization of ‘file_info_t *’ {aka ‘struct file_info *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+In file included from utils.c:1:
+file_tracker.h:20:5: error: unknown type name ‘off_t’
+   20 |     off_t size;                    // Dimensione file
+      |     ^~~~~
+file_tracker.h:43:66: error: unknown type name ‘off_t’
+   43 | file_info_t* file_info_create(const char *path, time_t modified, off_t size);
+      |                                                                  ^~~~~
+utils.c:7:66: error: unknown type name ‘off_t’
+    7 | file_info_t* file_info_create(const char *path, time_t modified, off_t size) {
+      |                                                                  ^~~~~
+utils.c: In function ‘file_matches_pattern’:
+utils.c:46:9: warning: unused variable ‘pattern_len’ [-Wunused-variable]
+   46 |     int pattern_len = strlen(pattern);
+      |         ^~~~~~~~~~~
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && gcc -std=c99 -Wall -o file_tracker main.c tracker_core.c utils.c 2>&1
+In file included from main.c:1:
+file_tracker.h:20:5: error: unknown type name ‘off_t’
+   20 |     off_t size;                    // Dimensione file
+      |     ^~~~~
+file_tracker.h:43:66: error: unknown type name ‘off_t’
+   43 | file_info_t* file_info_create(const char *path, time_t modified, off_t size);
+      |                                                                  ^~~~~
+In file included from tracker_core.c:1:
+file_tracker.h:20:5: error: unknown type name ‘off_t’
+   20 |     off_t size;                    // Dimensione file
+      |     ^~~~~
+file_tracker.h:43:66: error: unknown type name ‘off_t’
+   43 | file_info_t* file_info_create(const char *path, time_t modified, off_t size);
+      |                                                                  ^~~~~
+tracker_core.c: In function ‘tracker_scan_directory’:
+tracker_core.c:113:45: warning: implicit declaration of function ‘file_info_create’ [-Wimplicit-function-declaration]
+  113 |                     file_info_t *new_file = file_info_create(full_path,
+      |                                             ^~~~~~~~~~~~~~~~
+tracker_core.c:113:45: warning: initialization of ‘file_info_t *’ {aka ‘struct file_info *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+In file included from utils.c:1:
+file_tracker.h:20:5: error: unknown type name ‘off_t’
+   20 |     off_t size;                    // Dimensione file
+      |     ^~~~~
+file_tracker.h:43:66: error: unknown type name ‘off_t’
+   43 | file_info_t* file_info_create(const char *path, time_t modified, off_t size);
+      |                                                                  ^~~~~
+utils.c:7:66: error: unknown type name ‘off_t’
+    7 | file_info_t* file_info_create(const char *path, time_t modified, off_t size) {
+      |                                                                  ^~~~~
+utils.c: In function ‘file_matches_pattern’:
+utils.c:46:9: warning: unused variable ‘pattern_len’ [-Wunused-variable]
+   46 |     int pattern_len = strlen(pattern);
+      |         ^~~~~~~~~~~
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && gcc -std=c99 -Wall -o file_tracker main.c tracker_core.c utils.c 2>&1
+main.c: In function ‘main’:
+main.c:47:21: warning: ‘strcpy’ writing 1 or more bytes into a region of size 0 overflows the destination [-Wstringop-overflow=]
+   47 |                     strcpy(patterns[pattern_count], optarg);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.c:27:10: note: at offset 320 into destination object ‘patterns’ of size 320
+   27 |     char patterns[5][64];  // Array fisso per pattern
+      |          ^~~~~~~~
+utils.c: In function ‘file_matches_pattern’:
+utils.c:46:9: warning: unused variable ‘pattern_len’ [-Wunused-variable]
+   46 |     int pattern_len = strlen(pattern);
+      |         ^~~~~~~~~~~
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && ./file_tracker -h
+Usage: ./file_tracker [OPTIONS] <directory>
+File Tracker - Monitor file changes in a directory
+
+Options:
+  -l <logfile>    Specify log file (default: tracker.log)
+  -p <pattern>    Add file pattern to monitor (e.g., *.c, *.txt)
+  -i <interval>   Monitoring interval in seconds (default: 5)
+  -v              Verbose output
+  -h              Show this help
+
+Examples:
+  ./file_tracker /home/user/documents
+  ./file_tracker -l changes.log -p '*.c' -p '*.h' /home/user/project
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && mkdir -p test_dir && echo "test content" > test_dir/test.txt
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && timeout 5s ./file_tracker -v -i 1 test_dir
+Starting file tracker...
+Directory: test_dir
+Log file: tracker.log
+Interval: 1 seconds
+Performing initial scan...
+Initial scan complete. Monitoring 1 files.
+Checking for changes...
+Currently monitoring 1 files.
+Checking for changes...
+Currently monitoring 1 files.
+Checking for changes...
+Currently monitoring 1 files.
+Checking for changes...
+Currently monitoring 1 files.
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && cat tracker.log
+[2025-05-28 07:44:09] ADDED: test_dir/test.txt
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && ls -la
+total 96
+drwxrwxr-x 3 isax isax  4096 May 28 07:44 .
+drwxr-xr-x 4 isax isax  4096 May 28 07:33 ..
+-rwxrwxr-x 1 isax isax 14544 May 28 07:42 create_fixed_version.sh
+-rwxrwxr-x 1 isax isax 21808 May 28 07:43 file_tracker
+-rw-rw-r-- 1 isax isax  1825 May 28 07:43 file_tracker.h
+-rw-rw-r-- 1 isax isax  4044 May 28 07:40 main.c
+-rw-rw-r-- 1 isax isax  2509 May 28 07:40 Makefile
+-rw-rw-r-- 1 isax isax  4550 May 28 07:40 README.md
+-rwxrwxr-x 1 isax isax  7474 May 28 07:40 run_analysis.sh
+drwxrwxr-x 2 isax isax  4096 May 28 07:44 test_dir
+-rw-rw-r-- 1 isax isax  7160 May 28 07:43 tracker_core.c
+-rw-rw-r-- 1 isax isax    47 May 28 07:44 tracker.log
+-rw-rw-r-- 1 isax isax  3185 May 28 07:40 utils.c
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && make debug
+gcc -g -O0 -std=c99 -Wall -o file_tracker_debug main.c tracker_core.c utils.c
+main.c: In function ‘main’:
+main.c:47:21: warning: ‘strcpy’ writing 1 or more bytes into a region of size 0 overflows the destination [-Wstringop-overflow=]
+   47 |                     strcpy(patterns[pattern_count], optarg);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.c:27:10: note: at offset 320 into destination object ‘patterns’ of size 320
+   27 |     char patterns[5][64];  // Array fisso per pattern
+      |          ^~~~~~~~
+utils.c: In function ‘file_matches_pattern’:
+utils.c:46:9: warning: unused variable ‘pattern_len’ [-Wunused-variable]
+   46 |     int pattern_len = strlen(pattern);
+      |         ^~~~~~~~~~~
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && ./create_fixed_version.sh
+Creando versione corretta del file tracker...
+Versione corretta creata in ../test-new-fixed/
+Per confrontare le versioni, usa:
+diff -u tracker_core.c ../test-new-fixed/tracker_core.c
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new-fixed && gcc -std=c99 -Wall -o file_tracker_fixed main.c tracker_core.c utils.c
+tracker_core.c: In function ‘tracker_check_changes’:
+tracker_core.c:172:34: warning: implicit declaration of function ‘strdup’; did you mean ‘strcmp’? [-Wimplicit-function-declaration]
+  172 |             char *removed_path = strdup(current->path);
+      |                                  ^~~~~~
+      |                                  strcmp
+tracker_core.c:172:34: warning: initialization of ‘char *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+utils.c: In function ‘file_matches_pattern’:
+utils.c:41:9: warning: unused variable ‘pattern_len’ [-Wunused-variable]
+   41 |     int pattern_len = strlen(pattern);
+      |         ^~~~~~~~~~~
+isax@Ubuntu-24:~/Desktop/test-new-fixed$ cd /home/isax/Desktop/test-new-fixed && gcc -std=c99 -Wall -o file_tracker_fixed main.c tracker_core.c utils.c
+utils.c: In function ‘file_matches_pattern’:
+utils.c:41:9: warning: unused variable ‘pattern_len’ [-Wunused-variable]
+   41 |     int pattern_len = strlen(pattern);
+      |         ^~~~~~~~~~~
+isax@Ubuntu-24:~/Desktop/test-new-fixed$ cd /home/isax/Desktop/test-new && make asan
+gcc -fsanitize=address -g -O0 -std=c99 -Wall -o file_tracker_asan main.c tracker_core.c utils.c
+main.c: In function ‘main’:
+main.c:47:21: warning: ‘strcpy’ writing 1 or more bytes into a region of size 0 overflows the destination [-Wstringop-overflow=]
+   47 |                     strcpy(patterns[pattern_count], optarg);
+      |                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main.c:27:10: note: at offset 320 into destination object ‘patterns’ of size 320
+   27 |     char patterns[5][64];  // Array fisso per pattern
+      |          ^~~~~~~~
+utils.c: In function ‘file_matches_pattern’:
+utils.c:46:9: warning: unused variable ‘pattern_len’ [-Wunused-variable]
+   46 |     int pattern_len = strlen(pattern);
+      |         ^~~~~~~~~~~
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && timeout 3s ./file_tracker_asan -p "*.a" -p "*.b" -p "*.c" -p "*.d" -p "*.e" -p "*.f" test_dir 2>&1 | head -20
+=================================================================
+==7537==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x73e313e00160 at pc 0x73e3160a7923 bp 0x7ffeee4fd940 sp 0x7ffeee4fd0e8
+WRITE of size 4 at 0x73e313e00160 thread T0
+    #0 0x73e3160a7922 in strcpy ../../../../src/libsanitizer/asan/asan_interceptors.cpp:563
+    #1 0x55a645b9084d in main /home/isax/Desktop/test-new/main.c:47
+    #2 0x73e315c2a1c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #3 0x73e315c2a28a in __libc_start_main_impl ../csu/libc-start.c:360
+    #4 0x55a645b90544 in _start (/home/isax/Desktop/test-new/file_tracker_asan+0x2544) (BuildId: eb9f5822ad3c96cddc3112b4f6bcb407db38ea8e)
+
+Address 0x73e313e00160 is located in stack of thread T0 at offset 352 in frame
+    #0 0x55a645b90649 in main /home/isax/Desktop/test-new/main.c:20
+
+  This frame has 1 object(s):
+    [32, 352) 'patterns' (line 27) <== Memory access at offset 352 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow ../../../../src/libsanitizer/asan/asan_interceptors.cpp:563 in strcpy
+Shadow bytes around the buggy address:
+  0x73e313dffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x73e313dfff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && echo "Testing buffer overflow..." && timeout 3s ./file_tracker_asan "$(python3 -c 'print("A" * 300)')" 2>&1 | head -10
+Testing buffer overflow...
+=================================================================
+==7575==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x511000000140 at pc 0x748a64aa7923 bp 0x7fff4465bc10 sp 0x7fff4465b3b8
+WRITE of size 301 at 0x511000000140 thread T0
+    #0 0x748a64aa7922 in strcpy ../../../../src/libsanitizer/asan/asan_interceptors.cpp:563
+    #1 0x61f04da49fb8 in tracker_init /home/isax/Desktop/test-new/tracker_core.c:15
+    #2 0x61f04da49b49 in main /home/isax/Desktop/test-new/main.c:84
+    #3 0x748a6462a1c9 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #4 0x748a6462a28a in __libc_start_main_impl ../csu/libc-start.c:360
+    #5 0x61f04da49544 in _start (/home/isax/Desktop/test-new/file_tracker_asan+0x2544) (BuildId: eb9f5822ad3c96cddc3112b4f6bcb407db38ea8e)
+
+isax@Ubuntu-24:~/Desktop/test-new$ cd /home/isax/Desktop/test-new && rm -rf test_dir && ls -la
+total 184
+drwxrwxr-x 2 isax isax  4096 May 28 07:46 .
+drwxr-xr-x 5 isax isax  4096 May 28 07:44 ..
+-rwxrwxr-x 1 isax isax 14544 May 28 07:42 create_fixed_version.sh
+-rwxrwxr-x 1 isax isax 21808 May 28 07:43 file_tracker
+-rwxrwxr-x 1 isax isax 57248 May 28 07:45 file_tracker_asan
+-rwxrwxr-x 1 isax isax 32928 May 28 07:44 file_tracker_debug
+-rw-rw-r-- 1 isax isax  1825 May 28 07:43 file_tracker.h
+-rw-rw-r-- 1 isax isax  4044 May 28 07:40 main.c
+-rw-rw-r-- 1 isax isax  2509 May 28 07:40 Makefile
+-rw-rw-r-- 1 isax isax  4550 May 28 07:40 README.md
+-rwxrwxr-x 1 isax isax  7474 May 28 07:40 run_analysis.sh
+-rw-rw-r-- 1 isax isax  7160 May 28 07:43 tracker_core.c
+-rw-rw-r-- 1 isax isax    47 May 28 07:44 tracker.log
+-rw-rw-r-- 1 isax isax  3185 May 28 07:40 utils.c
