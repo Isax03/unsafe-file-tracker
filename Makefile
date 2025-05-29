@@ -15,18 +15,21 @@ TARGET_ASAN=build/file_tracker_asan
 all: $(TARGET)
 
 $(TARGET): $(SOURCES) file_tracker.h
+	mkdir -p build
 	$(CC) $(CFLAGS) -o $(TARGET) $(SOURCES)
 
 # Build per debugging
 debug: $(TARGET_DEBUG)
 
 $(TARGET_DEBUG): $(SOURCES) file_tracker.h
+	mkdir -p build
 	$(CC) $(CFLAGS_DEBUG) -o $(TARGET_DEBUG) $(SOURCES)
 
 # Build con AddressSanitizer
 asan: $(TARGET_ASAN)
 
 $(TARGET_ASAN): $(SOURCES) file_tracker.h
+	mkdir -p build
 	$(CC) $(CFLAGS_ASAN) -o $(TARGET_ASAN) $(SOURCES)
 
 # Analisi statica
