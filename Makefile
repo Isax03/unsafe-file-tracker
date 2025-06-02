@@ -1,8 +1,8 @@
 CC=gcc
-CFLAGS=-std=c99 -Wall
-CFLAGS_DEBUG=-g -O0 -std=c99 -Wall
-CFLAGS_ASAN=-fsanitize=address -g -O0 -std=c99 -Wall
-CFLAGS_STATIC=-Wall -Wextra -Wpedantic -Wformat-security -std=c99
+CFLAGS=-std=c11 -Wall
+CFLAGS_DEBUG=-g -O0 -std=c11 -Wall
+CFLAGS_ASAN=-fsanitize=address -g -O0 -std=c11 -Wall
+CFLAGS_STATIC=-Wall -Wextra -Wpedantic -Wformat-security -std=c11
 
 SOURCES=main.c tracker_core.c utils.c
 TARGET=build/file_tracker
@@ -35,7 +35,7 @@ $(TARGET_ASAN): $(SOURCES) file_tracker.h
 # Analisi statica
 static-analysis:
 	@echo "=== Running Cppcheck ==="
-	cppcheck --enable=all --inconclusive --std=c99 $(SOURCES)
+	cppcheck --enable=all --inconclusive --std=c11 $(SOURCES)
 	@echo "\n=== Running GCC with extra warnings ==="
 	$(CC) $(CFLAGS_STATIC) -c $(SOURCES)
 	@echo "\n=== Running Clang Static Analyzer ==="
@@ -45,7 +45,7 @@ static-analysis:
 test-valgrind: debug
 	@echo "=== Testing with Valgrind ==="
 	mkdir -p test_dir
-	valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET_DEBUG) test_dir
+	valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all ./$(TARGET_DEBUG) test_dir
 
 # Test con AddressSanitizer
 test-asan: asan
