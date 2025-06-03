@@ -75,7 +75,7 @@ gcc -fsanitize=address -g -O0 -o file_tracker_asan main.c tracker_core.c utils.c
 ### 5. Dangling Pointer
 
 -   **File**: `utils.c`
--   **Linee**: 72-79
+-   **Linee**: 69-76
 -   **Descrizione**: Nel contesto attuale non particolarmente rilevante, ma in casi di concorrenza può portare all'uso di valori errati
 
 ### 6. Buffer Overflow
