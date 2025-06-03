@@ -69,7 +69,7 @@ gcc -fsanitize=address -g -O0 -o file_tracker_asan main.c tracker_core.c utils.c
 ### 4. Out-of-Bounds Read
 
 -   **File**: `utils.c`
--   **Linea**: 56
+-   **Linea**: 55
 -   **Descrizione**: Se il nome del file è più corto dell'estensione con cui viene confrontato, la lettura può uscire dai limiti della stringa
 
 ### 5. Dangling Pointer

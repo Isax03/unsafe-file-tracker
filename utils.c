@@ -51,11 +51,8 @@ int file_matches_pattern(const char* filename, const char* pattern) {
         int ext_len = strlen(extension);
 
         // BUG: Out-of-bounds read - non verifica se filename è abbastanza lungo
-        if (filename_len >= ext_len) {
-            // VULNERABILITY: Potential Out-of-Bounds Read
-            return strcmp(filename + filename_len - ext_len, extension) == 0;
-        }
-        return 0;
+        // VULNERABILITY: Potential Out-of-Bounds Read
+        return strcmp(filename + filename_len - ext_len, extension) == 0;
     }
     else {
         // Pattern esatto
