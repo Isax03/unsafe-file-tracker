@@ -4,7 +4,7 @@ CFLAGS_DEBUG=-g -O0 -std=c11 -Wall
 CFLAGS_ASAN=-fsanitize=address -g -O0 -std=c11 -Wall
 CFLAGS_STATIC=-Wall -Wextra -Wpedantic -Wformat-security -std=c11
 
-SOURCES=main.c tracker_core.c utils.c
+SOURCES=main.c tracker_core.c utils.c ./lib/xmalloc/xmalloc.c -lsafestring_shared
 TARGET=build/file_tracker
 TARGET_DEBUG=build/file_tracker_debug
 TARGET_ASAN=build/file_tracker_asan
