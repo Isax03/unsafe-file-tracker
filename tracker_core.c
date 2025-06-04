@@ -1,4 +1,6 @@
 #include "file_tracker.h"
+#include "lib/xmalloc/xmalloc.h"
+#include <safe_lib.h>
 
 /*
  * Inizializza il file tracker
@@ -8,14 +10,12 @@ file_tracker_t* tracker_init(const char* directory, const char* log_file) {
     if (!tracker) {
         return NULL;
     }
+    
+    tracker->monitored_directory = xmalloc(256);
+    strncpy_s(tracker->monitored_directory, 256, directory, 255);
 
-    // BUG: Buffer overflow - non verifica lunghezza stringa (se le path di directory o log_file sono troppo lunghe)
-    tracker->monitored_directory = malloc(256);
-    strcpy(tracker->monitored_directory, directory);  // VULNERABILITY: Buffer Overflow
-
-    // BUG: Possibile buffer overflow anche qui
-    tracker->log_file_path = malloc(256);
-    strcpy(tracker->log_file_path, log_file);         // VULNERABILITY: Buffer Overflow
+    tracker->log_file_path = xmalloc(256);
+    strncpy_s(tracker->log_file_path, 256, log_file, 255);
 
     tracker->files = NULL;
     tracker->file_count = 0;

@@ -13,19 +13,19 @@ Questo progetto implementa un file tracker in C che monitora le modifiche ai fil
 ### Versione con bug (per analisi)
 
 ```bash
-gcc -o file_tracker main.c tracker_core.c utils.c -std=c11
+gcc -o file_tracker main.c tracker_core.c utils.c -std=c11 ./lib/xmalloc/xmalloc.c -lsafestring_shared
 ```
 
 ### Versione per debug con simboli
 
 ```bash
-gcc -g -O0 -o file_tracker_debug main.c tracker_core.c utils.c -std=c11
+gcc -g -O0 -o file_tracker_debug main.c tracker_core.c utils.c -std=c11 ./lib/xmalloc/xmalloc.c -lsafestring_shared
 ```
 
 ### Versione con AddressSanitizer
 
 ```bash
-gcc -fsanitize=address -g -O0 -o file_tracker_asan main.c tracker_core.c utils.c -std=c11
+gcc -fsanitize=address -g -O0 -o file_tracker_asan main.c tracker_core.c utils.c -std=c11 ./lib/xmalloc/xmalloc.c -lsafestring_shared
 ```
 
 ## Utilizzo
@@ -126,10 +126,10 @@ gcc -fsanitize=address -g -O0 -o file_tracker_asan main.c tracker_core.c utils.c
 
 ```bash
 # Cppcheck
-cppcheck --enable=warning --inconclusive --std=c11 *.c
+cppcheck --enable=warning --inconclusive --std=c11 *.c ./lib/xmalloc/xmalloc.c -lsafestring_shared
 
 # Clang Static Analyzer
-clang --analyze -Xanalyzer -analyzer-checker=core,security *.c
+clang --analyze -Xanalyzer -analyzer-checker=core,security *.c ./lib/xmalloc/xmalloc.c -lsafestring_shared
 
 # Frama-C (GUI)
 frama-c-gui -eva *.c
@@ -139,7 +139,7 @@ frama-c-gui -eva *.c
 
 ```bash
 # AddressSanitizer
-clang -fsanitize=address -g -O0 -std=c11 -o file_tracker_asan main.c tracker_core.c utils.c
+clang -fsanitize=address -g -O0 -std=c11 -o file_tracker_asan main.c tracker_core.c utils.c ./lib/xmalloc/xmalloc.c -lsafestring_shared
 
 ./file_tracker_asan /tmp
 
