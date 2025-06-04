@@ -6,20 +6,29 @@
  * Inizializza il file tracker
  */
 file_tracker_t* tracker_init(const char* directory, const char* log_file) {
-    file_tracker_t* tracker = malloc(sizeof(file_tracker_t));
+    file_tracker_t* tracker = xmalloc(sizeof(file_tracker_t));
     if (!tracker) {
         return NULL;
     }
     
     tracker->monitored_directory = xmalloc(256);
-    strncpy_s(tracker->monitored_directory, 256, directory, 255);
+    if(strncpy_s(tracker->monitored_directory, 256, directory, strlen(directory)) != EOK){
+        xfree(tracker->monitored_directory);
+        xfree(tracker);
+        return NULL;
+    }
 
     tracker->log_file_path = xmalloc(256);
-    strncpy_s(tracker->log_file_path, 256, log_file, 255);
+    if(strncpy_s(tracker->log_file_path, 256, log_file, strlen(log_file)) != EOK){
+        xfree(tracker->monitored_directory);
+        xfree(tracker->log_file_path);
+        xfree(tracker);
+        return NULL;
+    }
 
     tracker->files = NULL;
     tracker->file_count = 0;
-    tracker->watch_patterns = malloc(sizeof(char*) * 10);
+    tracker->watch_patterns = xmalloc(sizeof(char*) * 10);
     tracker->pattern_count = 0;
 
     return tracker;
