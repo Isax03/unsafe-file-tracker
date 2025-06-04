@@ -9,13 +9,34 @@ file_tracker_t* tracker_init(const char* directory, const char* log_file) {
         return NULL;
     }
 
-    // BUG: Buffer overflow - non verifica lunghezza stringa (se le path di directory o log_file sono troppo lunghe)
-    tracker->monitored_directory = malloc(256);
-    strcpy(tracker->monitored_directory, directory);  // VULNERABILITY: Buffer Overflow
+    /* CONTROLLO SULLA LUNGHEZZA */
+    if (strlen(directory) >= 256 || strlen(log_file) >= 256) {
+        /* LIBERAZIONE DI MEMORIA GIA' ALLOCATA IN CASO DI ERRORE */
+        free(tracker);
+        return NULL;
+    }
 
-    // BUG: Possibile buffer overflow anche qui
-    tracker->log_file_path = malloc(256);
-    strcpy(tracker->log_file_path, log_file);         // VULNERABILITY: Buffer Overflow
+    if((tracker->monitored_directory = malloc(256)) == NULL) {
+        /* LIBERAZIONE DI MEMORIA GIA' ALLOCATA IN CASO DI ERRORI NELL'ALLOCAZIONE */
+        free(tracker);
+        return NULL;
+    }
+
+    /* COPIA DI STRINGA CON LIMITI */
+    strncpy(tracker->monitored_directory, directory, 256);
+    /* TERMINAZIONE ESPLICITA DELLA STRINGA */
+    tracker->monitored_directory[255] = '\0';
+
+    if((tracker->log_file_path = malloc(256)) == NULL) {
+        /* LIBERAZIONE DI MEMORIA GIA' ALLOCATA IN CASO DI ERRORI NELL'ALLOCAZIONE */
+        free(tracker->monitored_directory);
+        free(tracker);
+        return NULL;
+    }
+    /* COPIA DI STRINGA CON LIMITI */
+    strncpy(tracker->log_file_path, log_file, 256);
+    /* TERMINAZIONE ESPLICITA DELLA STRINGA */
+    tracker->log_file_path[255] = '\0';
 
     tracker->files = NULL;
     tracker->file_count = 0;
@@ -42,7 +63,7 @@ void tracker_destroy(file_tracker_t* tracker) {
 
     // BUG: Double free - libera due volte la stessa memoria
     free(tracker->monitored_directory);
-    free(tracker->monitored_directory);               // VULNERABILITY: Double Free
+    /* !!! RIMOSSO IL DOUBLE FREE (riga duplicata) !!! */
 
     free(tracker->log_file_path);
 
