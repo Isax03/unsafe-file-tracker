@@ -8,6 +8,10 @@
 
 Questo progetto implementa un file tracker in C che monitora le modifiche ai file in una directory specificata. Il codice contiene intenzionalmente diversi bug legati alla memory safety per scopi educativi e di analisi.
 
+#### Dettagli dell'ambiente
+
+Il progetto è stato analizzato, compilato ed eseguito su un sistema _Linux_ (Ubuntu 24.04.2 LTS). Di conseguenza, tutti i risultati presentati fanno riferimento a tale ambiente. Non è garantito che il codice o gli strumenti utilizzati funzionino correttamente su altri sistemi operativi o distribuzioni.
+
 ## Compilazione
 
 ### Versione con bug (per analisi)
